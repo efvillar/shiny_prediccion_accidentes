@@ -113,13 +113,13 @@ server <- function(input, output) {
   
   
   #load data histórica diaria
-  load(file="./data_modelos_diario/Total_Dataset_Freq_diaria.Rda")
+  load(file="Total_Dataset_Freq_diaria.Rda")
   Data_Historica_Diaria<-Total_Dataset_Freq[,c("FECHA","ACCIDENTES_GRAVES","ACCIDENTES_LEVES","TOTAL_ACCIDENTES","ANO","SEMANA","MES","DIA")]
   #load data historica Semanal
-  load(file="./data_modelos_semana/Total_Dataset_Freq_S_semanal.Rda")
+  load(file="Total_Dataset_Freq_S_semanal.Rda")
   XY_Sem_shiny <- Total_Dataset_Freq_S
   #load data historica Semanal
-  load(file="./data_modelos_mes/Total_Dataset_Freq_M_mensual.Rda")
+  load(file="Total_Dataset_Freq_M_mensual.Rda")
   XY_Mes_shiny <- Total_Dataset_Freq_M[,c("ANO","MES","ACCIDENTES_GRAVES","ACCIDENTES_LEVES","TOTAL_ACCIDENTES")]        
   
   
@@ -301,16 +301,16 @@ server <- function(input, output) {
   
   
   #Total Accidentes, Accidentes graves y  leves
-  load(file="./data_modelos_diario/datos_pronostico_diario.Rda")
+  load(file="datos_pronostico_diario.Rda")
   datos_PD1 <- subset(datos_pronostico_diario, Fecha>="2019-01-1")
   
-  model_D_T <- readRDS("./data_modelos_diario/Prediccion_Total_Diario.Rds")
+  model_D_T <- readRDS("Prediccion_Total_Diario.Rds")
   #datos_PD1$prediccion_Total_D<-predict(model_D_T,datos_PD1[,c("Ano_Base","DIA","SEMANA","Feriado_Lunes","Feriado_Otro","Madre","Semana_Santa","Viernes_Desp_Quincena_v2","Feria_Flores")])
   
-  model_D_L <- readRDS("./data_modelos_diario/Prediccion_leves_Diario.Rds")
+  model_D_L <- readRDS("Prediccion_leves_Diario.Rds")
   #datos_PD1$prediccion_Leves_D<-predict(model_D_L,datos_PD1[,c("Ano_Base","DIA","SEMANA","Feriado_Lunes","Feriado_Otro","Madre","Semana_Santa","Viernes_Desp_Quincena_v2","Feria_Flores")])
   
-  model_D_G <- readRDS("./data_modelos_diario/Prediccion_Grave_Diario.Rds")
+  model_D_G <- readRDS("Prediccion_Grave_Diario.Rds")
   #datos_PD1$prediccion_Graves_D<-predict(model_D_G,datos_PD1[,c("Ano_Base","DIA","SEMANA","Feriado_Lunes","Feriado_Otro","Madre","Semana_Santa","Viernes_Desp_Quincena_v2","Feria_Flores")])
   
   
@@ -430,16 +430,16 @@ server <- function(input, output) {
   
   #MODELOS MENSUALES
   
-  load(file="./data_modelos_mes/datos_pronostico_mensual.Rda")
+  load(file="datos_pronostico_mensual.Rda")
   datos_PM1 <- subset(datos_pronostico_mensual, ANO=="2019" | ANO=="2020" | ANO=="2021")
   
-  model_M_T <- readRDS("./data_modelos_mes/Prediccion_Total_Mensual.Rds")
+  model_M_T <- readRDS("Prediccion_Total_Mensual.Rds")
   #datos_PM1$prediccion_Total_M<-predict(model_M_T,datos_PM1[,c("ANO","Ano_Base","MES","Feriados")],type="response")
   
-  model_M_L <- readRDS("./data_modelos_mes/Prediccion_leves_Mensual.Rds")
+  model_M_L <- readRDS("Prediccion_leves_Mensual.Rds")
   #datos_PM1$prediccion_Leves_M<-predict(model_M_L,datos_PM1[,c("ANO","Ano_Base","MES","Feriados")])
   
-  model_M_G <- readRDS("./data_modelos_mes/Prediccion_Grave_Mensual.Rds")
+  model_M_G <- readRDS("Prediccion_Grave_Mensual.Rds")
   #datos_PM1$prediccion_Graves_M<-predict(model_M_G,datos_PM1[,c("ANO","Ano_Base","MES","Feriados")],type="response")
   
   
